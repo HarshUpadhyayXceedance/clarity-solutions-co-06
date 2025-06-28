@@ -1,100 +1,79 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Users, Briefcase, DollarSign, CheckCircle, Star } from 'lucide-react';
+import { ArrowRight, Users, Briefcase, DollarSign, CheckCircle, Star, Zap, Shield, Globe } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { HeroScrollDemo } from '@/components/ui/container-scroll-demo';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 dark:from-gray-900 dark:via-black dark:to-gray-900 light:from-gray-50 light:via-white light:to-gray-100">
       <Header />
       
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 pt-24 pb-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-              Transform Your Business
-              <span className="text-blue-600 dark:text-blue-400 block">Digitally & Strategically</span>
-            </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-              We help small and medium businesses build powerful digital presence through custom websites, 
-              reliable technical support, and expert business consultancy.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700">
-                <Link to="/contact">
-                  Get Started Today
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link to="/services">
-                  Explore Services
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
+      {/* Hero Section with Scroll Animation */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-pink-900/20 dark:from-blue-900/30 dark:via-purple-900/30 dark:to-pink-900/30"></div>
+        <HeroScrollDemo />
       </section>
 
-      {/* Services Overview */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Complete Digital & Business Solutions
+      {/* Features Section */}
+      <section id="features" className="py-24 relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-3xl"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-6">
+              Complete Digital Solutions
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              From website creation to strategic consulting, we provide everything you need to succeed online and grow your business.
+            <p className="text-xl text-gray-300 dark:text-gray-300 light:text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Transform your business with our comprehensive suite of digital services designed for modern enterprises.
             </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="text-center p-6 hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6">
-                <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+            <Card className="bg-white/10 dark:bg-white/5 light:bg-white/80 backdrop-blur-lg border border-white/20 hover:border-blue-400/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/25 group">
+              <CardContent className="pt-8 text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-500/25">
+                  <Globe className="h-10 w-10 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3 dark:text-white">Website Design & Development</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  Custom, responsive websites that convert visitors into customers. Modern design meets powerful functionality.
+                <h3 className="text-2xl font-bold mb-4 text-white dark:text-white light:text-gray-900">Web Development</h3>
+                <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 mb-6 leading-relaxed">
+                  Custom, responsive websites that convert visitors into customers with modern design and powerful functionality.
                 </p>
-                <Button asChild variant="outline">
+                <Button asChild variant="outline" className="border-blue-400/50 text-blue-400 hover:bg-blue-400/10">
+                  <Link to="/services">Explore</Link>
+                </Button>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-white/10 dark:bg-white/5 light:bg-white/80 backdrop-blur-lg border border-white/20 hover:border-green-400/50 transition-all duration-300 hover:shadow-2xl hover:shadow-green-500/25 group">
+              <CardContent className="pt-8 text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-green-500/25">
+                  <Shield className="h-10 w-10 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-white dark:text-white light:text-gray-900">Technical Support</h3>
+                <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 mb-6 leading-relaxed">
+                  Reliable ongoing support to keep your digital presence running smoothly while you focus on business growth.
+                </p>
+                <Button asChild variant="outline" className="border-green-400/50 text-green-400 hover:bg-green-400/10">
                   <Link to="/services">Learn More</Link>
                 </Button>
               </CardContent>
             </Card>
             
-            <Card className="text-center p-6 hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6">
-                <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Briefcase className="h-8 w-8 text-green-600 dark:text-green-400" />
+            <Card className="bg-white/10 dark:bg-white/5 light:bg-white/80 backdrop-blur-lg border border-white/20 hover:border-purple-400/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/25 group">
+              <CardContent className="pt-8 text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-400 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-purple-500/25">
+                  <Zap className="h-10 w-10 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3 dark:text-white">Technical Support & Maintenance</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  Reliable ongoing support to keep your digital presence running smoothly. We handle the tech, you focus on business.
+                <h3 className="text-2xl font-bold mb-4 text-white dark:text-white light:text-gray-900">Business Strategy</h3>
+                <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 mb-6 leading-relaxed">
+                  Strategic guidance in technical, financial, and operational areas to optimize your business growth.
                 </p>
-                <Button asChild variant="outline">
-                  <Link to="/services">Learn More</Link>
-                </Button>
-              </CardContent>
-            </Card>
-            
-            <Card className="text-center p-6 hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6">
-                <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <DollarSign className="h-8 w-8 text-purple-600 dark:text-purple-400" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 dark:text-white">Business Consultancy</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  Strategic guidance in technical, financial, and managerial areas to optimize your operations and growth.
-                </p>
-                <Button asChild variant="outline">
-                  <Link to="/services">Learn More</Link>
+                <Button asChild variant="outline" className="border-purple-400/50 text-purple-400 hover:bg-purple-400/10">
+                  <Link to="/services">Discover</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -103,67 +82,68 @@ const Index = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+      <section className="py-24 relative">
+        <div className="absolute inset-0 bg-gradient-to-l from-purple-900/20 to-blue-900/20"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
                 Why Businesses Choose Us
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-300">
+              <p className="text-xl text-gray-300 dark:text-gray-300 light:text-gray-600 max-w-3xl mx-auto">
                 We combine technical expertise with business acumen to deliver results that matter.
               </p>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
+            <div className="grid md:grid-cols-2 gap-12">
+              <div className="space-y-8">
+                <div className="flex items-start gap-6 p-6 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 hover:border-blue-400/30 transition-all duration-300">
+                  <CheckCircle className="h-8 w-8 text-blue-400 mt-2 flex-shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-lg mb-2 dark:text-white">End-to-End Solutions</h3>
-                    <p className="text-gray-600 dark:text-gray-300">From initial strategy to ongoing support, we handle every aspect of your digital transformation.</p>
+                    <h3 className="font-bold text-xl mb-3 text-white dark:text-white light:text-gray-900">End-to-End Solutions</h3>
+                    <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 leading-relaxed">From initial strategy to ongoing support, we handle every aspect of your digital transformation journey.</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
+                <div className="flex items-start gap-6 p-6 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 hover:border-green-400/30 transition-all duration-300">
+                  <CheckCircle className="h-8 w-8 text-green-400 mt-2 flex-shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-lg mb-2 dark:text-white">SMB Focused</h3>
-                    <p className="text-gray-600 dark:text-gray-300">We understand the unique challenges of small and medium businesses and tailor our approach accordingly.</p>
+                    <h3 className="font-bold text-xl mb-3 text-white dark:text-white light:text-gray-900">SMB Focused</h3>
+                    <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 leading-relaxed">We understand the unique challenges of small and medium businesses and tailor our approach accordingly.</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
+                <div className="flex items-start gap-6 p-6 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 hover:border-purple-400/30 transition-all duration-300">
+                  <CheckCircle className="h-8 w-8 text-purple-400 mt-2 flex-shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-lg mb-2 dark:text-white">Proven Results</h3>
-                    <p className="text-gray-600 dark:text-gray-300">Our clients see measurable improvements in their online presence and business operations.</p>
+                    <h3 className="font-bold text-xl mb-3 text-white dark:text-white light:text-gray-900">Proven Results</h3>
+                    <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 leading-relaxed">Our clients see measurable improvements in their online presence and business operations.</p>
                   </div>
                 </div>
               </div>
               
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
+              <div className="space-y-8">
+                <div className="flex items-start gap-6 p-6 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 hover:border-yellow-400/30 transition-all duration-300">
+                  <CheckCircle className="h-8 w-8 text-yellow-400 mt-2 flex-shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-lg mb-2 dark:text-white">Expert Team</h3>
-                    <p className="text-gray-600 dark:text-gray-300">Our multidisciplinary team brings together web development, IT support, and business strategy expertise.</p>
+                    <h3 className="font-bold text-xl mb-3 text-white dark:text-white light:text-gray-900">Expert Team</h3>
+                    <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 leading-relaxed">Our multidisciplinary team brings together web development, IT support, and business strategy expertise.</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
+                <div className="flex items-start gap-6 p-6 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 hover:border-pink-400/30 transition-all duration-300">
+                  <CheckCircle className="h-8 w-8 text-pink-400 mt-2 flex-shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-lg mb-2 dark:text-white">Ongoing Partnership</h3>
-                    <p className="text-gray-600 dark:text-gray-300">We're not just service providers – we're your long-term partners in growth and success.</p>
+                    <h3 className="font-bold text-xl mb-3 text-white dark:text-white light:text-gray-900">Ongoing Partnership</h3>
+                    <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 leading-relaxed">We're not just service providers – we're your long-term partners in growth and success.</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
+                <div className="flex items-start gap-6 p-6 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 hover:border-cyan-400/30 transition-all duration-300">
+                  <CheckCircle className="h-8 w-8 text-cyan-400 mt-2 flex-shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-lg mb-2 dark:text-white">Flexible Solutions</h3>
-                    <p className="text-gray-600 dark:text-gray-300">Choose from our packages or get a custom solution that fits your specific needs and budget.</p>
+                    <h3 className="font-bold text-xl mb-3 text-white dark:text-white light:text-gray-900">Flexible Solutions</h3>
+                    <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 leading-relaxed">Choose from our packages or get a custom solution that fits your specific needs and budget.</p>
                   </div>
                 </div>
               </div>
@@ -173,65 +153,66 @@ const Index = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+      <section id="testimonials" className="py-24 relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-pink-900/20 to-purple-900/20"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent mb-6">
               Client Success Stories
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
+            <p className="text-xl text-gray-300 dark:text-gray-300 light:text-gray-600 max-w-3xl mx-auto">
               See how we've helped businesses transform their digital presence and operations.
             </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="p-6">
-              <CardContent className="pt-0">
-                <div className="flex items-center mb-4">
+            <Card className="bg-white/10 dark:bg-white/5 light:bg-white/80 backdrop-blur-lg border border-white/20 hover:border-yellow-400/50 transition-all duration-300 hover:shadow-2xl hover:shadow-yellow-500/25">
+              <CardContent className="pt-8">
+                <div className="flex items-center mb-6">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                   ))}
                 </div>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 mb-6 leading-relaxed">
                   "They transformed our outdated website into a modern, conversion-focused platform. Our online leads increased by 300% in just 3 months."
                 </p>
                 <div>
-                  <p className="font-semibold dark:text-white">Sarah Johnson</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">CEO, Johnson & Associates</p>
+                  <p className="font-bold text-white dark:text-white light:text-gray-900">Sarah Johnson</p>
+                  <p className="text-sm text-gray-400 dark:text-gray-400 light:text-gray-500">CEO, Johnson & Associates</p>
                 </div>
               </CardContent>
             </Card>
             
-            <Card className="p-6">
-              <CardContent className="pt-0">
-                <div className="flex items-center mb-4">
+            <Card className="bg-white/10 dark:bg-white/5 light:bg-white/80 backdrop-blur-lg border border-white/20 hover:border-green-400/50 transition-all duration-300 hover:shadow-2xl hover:shadow-green-500/25">
+              <CardContent className="pt-8">
+                <div className="flex items-center mb-6">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                   ))}
                 </div>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 mb-6 leading-relaxed">
                   "Their business consultancy helped us streamline operations and improve our ROI by 40%. The technical support is outstanding too."
                 </p>
                 <div>
-                  <p className="font-semibold dark:text-white">Michael Chen</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Owner, Chen Manufacturing</p>
+                  <p className="font-bold text-white dark:text-white light:text-gray-900">Michael Chen</p>
+                  <p className="text-sm text-gray-400 dark:text-gray-400 light:text-gray-500">Owner, Chen Manufacturing</p>
                 </div>
               </CardContent>
             </Card>
             
-            <Card className="p-6">
-              <CardContent className="pt-0">
-                <div className="flex items-center mb-4">
+            <Card className="bg-white/10 dark:bg-white/5 light:bg-white/80 backdrop-blur-lg border border-white/20 hover:border-blue-400/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/25">
+              <CardContent className="pt-8">
+                <div className="flex items-center mb-6">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                   ))}
                 </div>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 mb-6 leading-relaxed">
                   "Professional, reliable, and results-driven. They handle all our tech needs so we can focus on what we do best – serving our customers."
                 </p>
                 <div>
-                  <p className="font-semibold dark:text-white">Lisa Rodriguez</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Director, Rodriguez Retail</p>
+                  <p className="font-bold text-white dark:text-white light:text-gray-900">Lisa Rodriguez</p>
+                  <p className="text-sm text-gray-400 dark:text-gray-400 light:text-gray-500">Director, Rodriguez Retail</p>
                 </div>
               </CardContent>
             </Card>
@@ -240,26 +221,29 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-blue-600 dark:bg-blue-800">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to Transform Your Business?
-          </h2>
-          <p className="text-xl text-blue-100 dark:text-blue-200 mb-8 max-w-2xl mx-auto">
-            Let's discuss how we can help you build a stronger digital presence and optimize your business operations.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="secondary">
-              <Link to="/contact">
-                Get Free Consultation
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-blue-600">
-              <Link to="/pricing">
-                View Pricing
-              </Link>
-            </Button>
+      <section className="py-24 relative">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-3xl"></div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <div className="max-w-4xl mx-auto bg-white/10 dark:bg-white/5 light:bg-white/80 backdrop-blur-lg rounded-3xl p-12 border border-white/20">
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-6">
+              Ready to Transform Your Business?
+            </h2>
+            <p className="text-xl text-gray-300 dark:text-gray-300 light:text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+              Let's discuss how we can help you build a stronger digital presence and optimize your business operations.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Button asChild size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-lg shadow-blue-500/25">
+                <Link to="/contact">
+                  Get Free Consultation
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 backdrop-blur-lg">
+                <Link to="/pricing">
+                  View Pricing
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>

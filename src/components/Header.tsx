@@ -1,121 +1,56 @@
 
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+"use client";
+import React, { useState } from "react";
+import { HoveredLink, Menu, MenuItem } from "@/components/ui/navbar-menu";
+import { cn } from "@/lib/utils";
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { Link } from 'react-router-dom';
+
+function ModernNavbar({ className }: { className?: string }) {
+  const [active, setActive] = useState<string | null>(null);
+  return (
+    <div
+      className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}
+    >
+      <Menu setActive={setActive}>
+        <MenuItem setActive={setActive} active={active} item="Home">
+          <div className="flex flex-col space-y-4 text-sm">
+            <HoveredLink to="/">Home</HoveredLink>
+            <HoveredLink to="/#features">Features</HoveredLink>
+            <HoveredLink to="/#testimonials">Testimonials</HoveredLink>
+          </div>
+        </MenuItem>
+        <MenuItem setActive={setActive} active={active} item="Services">
+          <div className="flex flex-col space-y-4 text-sm">
+            <HoveredLink to="/services">Web Development</HoveredLink>
+            <HoveredLink to="/services">Technical Support</HoveredLink>
+            <HoveredLink to="/services">Business Consultancy</HoveredLink>
+            <HoveredLink to="/services">All Services</HoveredLink>
+          </div>
+        </MenuItem>
+        <MenuItem setActive={setActive} active={active} item="Company">
+          <div className="flex flex-col space-y-4 text-sm">
+            <HoveredLink to="/about">About Us</HoveredLink>
+            <HoveredLink to="/blog">Blog</HoveredLink>
+            <HoveredLink to="/contact">Contact</HoveredLink>
+          </div>
+        </MenuItem>
+        <MenuItem setActive={setActive} active={active} item="Pricing">
+          <div className="flex flex-col space-y-4 text-sm">
+            <HoveredLink to="/pricing">Pricing Plans</HoveredLink>
+            <HoveredLink to="/contact">Custom Quote</HoveredLink>
+          </div>
+        </MenuItem>
+      </Menu>
+      <div className="fixed top-4 right-4">
+        <ThemeToggle />
+      </div>
+    </div>
+  );
+}
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  return (
-    <header className="fixed top-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm z-50 border-b border-gray-200 dark:border-gray-800">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">DB</span>
-            </div>
-            <span className="text-xl font-bold text-gray-900 dark:text-white">DigitalBridge</span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-              Home
-            </Link>
-            <Link to="/services" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-              Services
-            </Link>
-            <Link to="/about" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-              About
-            </Link>
-            <Link to="/pricing" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-              Pricing
-            </Link>
-            <Link to="/blog" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-              Blog
-            </Link>
-            <ThemeToggle />
-            <Button asChild>
-              <Link to="/contact">Contact Us</Link>
-            </Button>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-2">
-            <ThemeToggle />
-            <button
-              className="p-2"
-              onClick={toggleMenu}
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? (
-                <X className="h-6 w-6 text-gray-700 dark:text-gray-300" />
-              ) : (
-                <Menu className="h-6 w-6 text-gray-700 dark:text-gray-300" />
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-gray-200 dark:border-gray-800">
-            <div className="flex flex-col space-y-4">
-              <Link
-                to="/"
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors px-2 py-1"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <Link
-                to="/services"
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors px-2 py-1"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Services
-              </Link>
-              <Link
-                to="/about"
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors px-2 py-1"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                About
-              </Link>
-              <Link
-                to="/pricing"
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors px-2 py-1"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Pricing
-              </Link>
-              <Link
-                to="/blog"
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors px-2 py-1"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Blog
-              </Link>
-              <div className="pt-2">
-                <Button asChild className="w-full">
-                  <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
-                    Contact Us
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </nav>
-        )}
-      </div>
-    </header>
-  );
+  return <ModernNavbar className="top-2" />;
 };
 
 export default Header;
