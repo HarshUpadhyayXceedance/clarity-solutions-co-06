@@ -8,8 +8,79 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { HeroScrollDemo } from '@/components/ui/container-scroll-demo';
 import { CTASection } from '@/components/ui/cta-section';
+import RadialOrbitalTimeline from '@/components/ui/radial-orbital-timeline';
 
 const Index = () => {
+  // Timeline data for "Why Choose Us" section with original content
+  const whyChooseUsData = [
+    {
+      id: 1,
+      title: "End-to-End Solutions",
+      date: "Complete",
+      content: "From initial strategy to ongoing support, we handle every aspect of your digital transformation journey.",
+      category: "Solutions",
+      icon: Globe,
+      relatedIds: [2, 3],
+      status: "completed" as const,
+      energy: 100,
+    },
+    {
+      id: 2,
+      title: "SMB Focused",
+      date: "Specialized",
+      content: "We understand the unique challenges of small and medium businesses and tailor our approach accordingly.",
+      category: "Focus",
+      icon: Users,
+      relatedIds: [1, 4],
+      status: "completed" as const,
+      energy: 95,
+    },
+    {
+      id: 3,
+      title: "Proven Results",
+      date: "Verified",
+      content: "Our clients see measurable improvements in their online presence and business operations.",
+      category: "Results",
+      icon: CheckCircle,
+      relatedIds: [1, 5],
+      status: "completed" as const,
+      energy: 90,
+    },
+    {
+      id: 4,
+      title: "Expert Team",
+      date: "Professional",
+      content: "Our multidisciplinary team brings together web development, IT support, and business strategy expertise.",
+      category: "Team",
+      icon: Star,
+      relatedIds: [2, 6],
+      status: "completed" as const,
+      energy: 85,
+    },
+    {
+      id: 5,
+      title: "Ongoing Partnership",
+      date: "Long-term",
+      content: "We're not just service providers – we're your long-term partners in growth and success.",
+      category: "Partnership",
+      icon: Shield,
+      relatedIds: [3, 6],
+      status: "in-progress" as const,
+      energy: 80,
+    },
+    {
+      id: 6,
+      title: "Flexible Solutions",
+      date: "Adaptable",
+      content: "Choose from our packages or get a custom solution that fits your specific needs and budget.",
+      category: "Flexibility",
+      icon: Zap,
+      relatedIds: [4, 5],
+      status: "completed" as const,
+      energy: 75,
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 dark:from-gray-900 dark:via-black dark:to-gray-900 light:from-gray-50 light:via-white light:to-gray-100">
       <Header />
@@ -82,74 +153,20 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Why Choose Us */}
+      {/* Why Choose Us - Orbital Timeline */}
       <section className="py-24 relative">
         <div className="absolute inset-0 bg-gradient-to-l from-purple-900/20 to-blue-900/20"></div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
-                Why Businesses Choose Us
-              </h2>
-              <p className="text-xl text-gray-300 dark:text-gray-300 light:text-gray-600 max-w-3xl mx-auto">
-                We combine technical expertise with business acumen to deliver results that matter.
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-12">
-              <div className="space-y-8">
-                <div className="flex items-start gap-6 p-6 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 hover:border-blue-400/30 transition-all duration-300">
-                  <CheckCircle className="h-8 w-8 text-blue-400 mt-2 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-bold text-xl mb-3 text-white dark:text-white light:text-gray-900">End-to-End Solutions</h3>
-                    <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 leading-relaxed">From initial strategy to ongoing support, we handle every aspect of your digital transformation journey.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-6 p-6 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 hover:border-green-400/30 transition-all duration-300">
-                  <CheckCircle className="h-8 w-8 text-green-400 mt-2 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-bold text-xl mb-3 text-white dark:text-white light:text-gray-900">SMB Focused</h3>
-                    <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 leading-relaxed">We understand the unique challenges of small and medium businesses and tailor our approach accordingly.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-6 p-6 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 hover:border-purple-400/30 transition-all duration-300">
-                  <CheckCircle className="h-8 w-8 text-purple-400 mt-2 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-bold text-xl mb-3 text-white dark:text-white light:text-gray-900">Proven Results</h3>
-                    <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 leading-relaxed">Our clients see measurable improvements in their online presence and business operations.</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="space-y-8">
-                <div className="flex items-start gap-6 p-6 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 hover:border-yellow-400/30 transition-all duration-300">
-                  <CheckCircle className="h-8 w-8 text-yellow-400 mt-2 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-bold text-xl mb-3 text-white dark:text-white light:text-gray-900">Expert Team</h3>
-                    <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 leading-relaxed">Our multidisciplinary team brings together web development, IT support, and business strategy expertise.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-6 p-6 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 hover:border-pink-400/30 transition-all duration-300">
-                  <CheckCircle className="h-8 w-8 text-pink-400 mt-2 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-bold text-xl mb-3 text-white dark:text-white light:text-gray-900">Ongoing Partnership</h3>
-                    <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 leading-relaxed">We're not just service providers – we're your long-term partners in growth and success.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-6 p-6 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 hover:border-cyan-400/30 transition-all duration-300">
-                  <CheckCircle className="h-8 w-8 text-cyan-400 mt-2 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-bold text-xl mb-3 text-white dark:text-white light:text-gray-900">Flexible Solutions</h3>
-                    <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 leading-relaxed">Choose from our packages or get a custom solution that fits your specific needs and budget.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
+              Why Businesses Choose Us
+            </h2>
+            <p className="text-xl text-gray-300 dark:text-gray-300 light:text-gray-600 max-w-3xl mx-auto">
+              We combine technical expertise with business acumen to deliver results that matter.
+            </p>
           </div>
+          
+          <RadialOrbitalTimeline timelineData={whyChooseUsData} />
         </div>
       </section>
 
