@@ -70,7 +70,7 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        glow: "bg-gradient-to-r from-brand to-brand-foreground text-primary-foreground hover:from-brand/90 hover:to-brand-foreground/90",
+        glow: "bg-gradient-to-r from-orange-500 to-yellow-500 text-white hover:from-orange-600 hover:to-yellow-600 shadow-lg shadow-orange-500/25",
       },
       size: {
         default: "h-10 px-4 py-2",
@@ -130,35 +130,36 @@ export function CTASection({
   className,
 }: CTAProps) {
   return (
-    <section className={cn("overflow-hidden pt-0 md:pt-0", className)}>
-      <div className="relative mx-auto flex max-w-container flex-col items-center gap-6 px-8 py-12 text-center sm:gap-8 md:py-24">
+    <section className={cn("overflow-hidden pt-0 md:pt-0 relative", className)}>
+      <div className="absolute inset-0 bg-gradient-to-r from-orange-900/20 to-yellow-900/20"></div>
+      <div className="relative mx-auto flex max-w-4xl flex-col items-center gap-6 px-8 py-12 text-center sm:gap-8 md:py-24 z-10">
         {/* Badge */}
         {badge && (
           <Badge
             variant="outline"
-            className="opacity-0 animate-fade-in delay-100"
+            className="opacity-0 animate-fade-in-up delay-100 border-orange-400/50 text-orange-400"
           >
-            <span className="text-muted-foreground">{badge.text}</span>
+            <span className="text-orange-300">{badge.text}</span>
           </Badge>
         )}
 
-        {/* Title */}
-        <h2 className="text-3xl font-semibold sm:text-5xl opacity-0 animate-fade-in delay-200">
+        {/* Title with Typewriter Effect */}
+        <h2 className="text-3xl font-semibold sm:text-5xl opacity-0 animate-fade-in-up delay-200 bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
           <TypewriterText text={title} speed={80} delay={500} />
         </h2>
 
         {/* Description */}
         {description && (
-          <p className="text-muted-foreground opacity-0 animate-fade-in delay-300">
+          <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 opacity-0 animate-fade-in-up delay-300 max-w-2xl">
             {description}
           </p>
         )}
 
         {/* Action Button */}
         <Button
-          variant={action.variant || "default"}
+          variant={action.variant || "glow"}
           size="lg"
-          className="opacity-0 animate-fade-in delay-500"
+          className="opacity-0 animate-fade-in-up delay-500"
           asChild
         >
           <a href={action.href}>{action.text}</a>
@@ -166,7 +167,11 @@ export function CTASection({
 
         {/* Glow Effect */}
         {withGlow && (
-          <div className="fade-top-lg pointer-events-none absolute inset-0 rounded-2xl shadow-glow opacity-0 animate-scale-in delay-700" />
+          <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 animate-fade-in-up delay-700" 
+               style={{
+                 background: 'radial-gradient(ellipse at center, rgba(249, 115, 22, 0.1) 0%, transparent 70%)',
+                 maskImage: 'linear-gradient(to bottom, transparent, rgba(0, 0, 0, 1) 8rem)'
+               }} />
         )}
       </div>
     </section>
@@ -184,7 +189,7 @@ export function CTADemo() {
       action={{
         text: "Get Started",
         href: "/docs",
-        variant: "default"
+        variant: "glow"
       }}
     />
   )
