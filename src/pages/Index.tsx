@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { HeroScrollDemo } from '@/components/ui/container-scroll-demo';
+import { CTASection } from '@/components/ui/cta-section';
 
 const Index = () => {
   return (
@@ -220,33 +221,20 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 relative">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-3xl"></div>
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="max-w-4xl mx-auto bg-white/10 dark:bg-white/5 light:bg-white/80 backdrop-blur-lg rounded-3xl p-12 border border-white/20">
-            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-6">
-              Ready to Transform Your Business?
-            </h2>
-            <p className="text-xl text-gray-300 dark:text-gray-300 light:text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Let's discuss how we can help you build a stronger digital presence and optimize your business operations.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button asChild size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-lg shadow-blue-500/25">
-                <Link to="/contact">
-                  Get Free Consultation
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 backdrop-blur-lg">
-                <Link to="/pricing">
-                  View Pricing
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Enhanced CTA Section with Typewriter Effect */}
+      <CTASection
+        badge={{
+          text: "Ready to Transform?"
+        }}
+        title="Ready to Transform Your Business?"
+        description="Let's discuss how we can help you build a stronger digital presence and optimize your business operations."
+        action={{
+          text: "Get Free Consultation",
+          href: "/contact",
+          variant: "glow"
+        }}
+        className="py-24 relative"
+      />
 
       <Footer />
     </div>
