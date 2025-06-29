@@ -7,6 +7,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
+import WebDevelopment from "./pages/WebDevelopment";
+import TechnicalSupport from "./pages/TechnicalSupport";
+import BusinessConsultancy from "./pages/BusinessConsultancy";
 import About from "./pages/About";
 import Pricing from "./pages/Pricing";
 import Contact from "./pages/Contact";
@@ -25,6 +28,9 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/web-development" element={<WebDevelopment />} />
+            <Route path="/services/technical-support" element={<TechnicalSupport />} />
+            <Route path="/services/business-consultancy" element={<BusinessConsultancy />} />
             <Route path="/about" element={<About />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/contact" element={<Contact />} />

@@ -22,9 +22,9 @@ function ModernNavbar({ className }: { className?: string }) {
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Services">
           <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink to="/services">Web Development</HoveredLink>
-            <HoveredLink to="/services">Technical Support</HoveredLink>
-            <HoveredLink to="/services">Business Consultancy</HoveredLink>
+            <HoveredLink to="/services/web-development">Web Development</HoveredLink>
+            <HoveredLink to="/services/technical-support">Technical Support</HoveredLink>
+            <HoveredLink to="/services/business-consultancy">Business Consultancy</HoveredLink>
             <HoveredLink to="/services">All Services</HoveredLink>
           </div>
         </MenuItem>
