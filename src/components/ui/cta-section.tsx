@@ -169,50 +169,6 @@ export function CTASection({
           <div className="fade-top-lg pointer-events-none absolute inset-0 rounded-2xl shadow-glow opacity-0 animate-scale-in delay-700" />
         )}
       </div>
-      <style jsx global>{`
-        @layer utilities {
-          .delay-100 {
-            animation-delay: 100ms;
-          }
-          .delay-200 {
-            animation-delay: 200ms;
-          }
-          .delay-300 {
-            animation-delay: 300ms;
-          }
-          .delay-500 {
-            animation-delay: 500ms;
-          }
-          .delay-700 {
-            animation-delay: 700ms;
-          }
-          
-          .fade-top-lg {
-            mask-image: linear-gradient(to bottom, 
-              transparent, 
-              rgba(0, 0, 0, 1) 8rem
-            );
-          }
-
-          .animate-in {
-            animation-duration: 1000ms;
-            animation-fill-mode: forwards;
-            animation-timing-function: ease-out;
-          }
-        }
-
-        @layer base {
-          :root {
-            --brand: 27 96% 61%;
-            --brand-foreground: 31 97% 72%;
-          }
-         
-          .dark {
-            --brand: 31 97% 72%;
-            --brand-foreground: 27 96% 61%
-          }
-        }
-      `}</style>
     </section>
   )
 }
