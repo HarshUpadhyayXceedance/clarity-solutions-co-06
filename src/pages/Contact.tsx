@@ -74,42 +74,69 @@ const Contact = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-orange-50 via-yellow-50 to-amber-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-100 to-yellow-100 text-orange-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-yellow-50 to-amber-50">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(249,115,22,0.1),transparent_50%)] animate-pulse"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(251,191,36,0.1),transparent_50%)] animate-pulse" style={{animationDelay: '1s'}}></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-5xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-100 to-yellow-100 backdrop-blur-sm border border-orange-200/50 text-orange-700 px-6 py-3 rounded-full text-sm font-medium mb-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
               <MessageSquare className="h-4 w-4" />
               Let's Start a Conversation
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-orange-600 via-yellow-600 to-amber-600 bg-clip-text text-transparent mb-6">
+            
+            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-orange-600 via-yellow-600 to-amber-600 bg-clip-text text-transparent mb-8 leading-tight">
               Get In Touch
             </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Ready to transform your business? Let's discuss your needs and create a custom solution that drives results and growth.
+            
+            <p className="text-xl md:text-2xl text-gray-700 mb-12 leading-relaxed max-w-3xl mx-auto font-light">
+              Ready to <span className="font-semibold text-orange-600">transform your business</span>? Let's discuss your needs and create a custom solution that drives results and growth.
             </p>
+            
+            {/* Quick Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-orange-600 mb-2">24h</div>
+                <div className="text-gray-600">Response Time</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-orange-600 mb-2">500+</div>
+                <div className="text-gray-600">Projects Completed</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-orange-600 mb-2">100%</div>
+                <div className="text-gray-600">Client Satisfaction</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="py-20">
+      <section className="py-20 bg-gradient-to-b from-white to-orange-50/20">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
             
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <Card className="shadow-2xl border-0">
-                <CardHeader className="bg-gradient-to-r from-orange-50 to-yellow-50">
-                  <CardTitle className="text-2xl md:text-3xl text-gray-900">Send Us a Message</CardTitle>
-                  <p className="text-gray-600 text-lg">
-                    Fill out the form below and we'll get back to you within 24 hours with a personalized response.
-                  </p>
+              <Card className="shadow-2xl border-0 backdrop-blur-sm bg-white/95 hover:shadow-3xl transition-all duration-300">
+                <CardHeader className="bg-gradient-to-r from-orange-50 to-yellow-50 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-orange-100/20 to-yellow-100/20"></div>
+                  <div className="relative z-10">
+                    <CardTitle className="text-2xl md:text-3xl text-gray-900 mb-2">Send Us a Message</CardTitle>
+                    <p className="text-gray-600 text-lg leading-relaxed">
+                      Fill out the form below and we'll get back to you within 24 hours with a personalized response.
+                    </p>
+                  </div>
                 </CardHeader>
-                <CardContent className="p-8">
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                <CardContent className="p-8 md:p-10">
+                  <form onSubmit={handleSubmit} className="space-y-8">
                     <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
+                      <div className="group">
+                        <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-orange-600 transition-colors">
                           Full Name *
                         </label>
                         <Input
@@ -117,13 +144,13 @@ const Contact = () => {
                           type="text"
                           value={formData.name}
                           onChange={(e) => handleInputChange('name', e.target.value)}
-                          placeholder="Your full name"
-                          className="h-12 border-orange-200 focus:border-orange-400"
+                          placeholder="Enter your full name"
+                          className="h-14 border-2 border-gray-200 hover:border-orange-300 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 rounded-xl transition-all duration-200 text-lg"
                           required
                         />
                       </div>
-                      <div>
-                        <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                      <div className="group">
+                        <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-orange-600 transition-colors">
                           Email Address *
                         </label>
                         <Input
@@ -132,7 +159,7 @@ const Contact = () => {
                           value={formData.email}
                           onChange={(e) => handleInputChange('email', e.target.value)}
                           placeholder="your@email.com"
-                          className="h-12 border-orange-200 focus:border-orange-400"
+                          className="h-14 border-2 border-gray-200 hover:border-orange-300 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 rounded-xl transition-all duration-200 text-lg"
                           required
                         />
                       </div>
@@ -220,8 +247,9 @@ const Contact = () => {
                       />
                     </div>
                     
-                    <Button type="submit" className="w-full bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white h-12 text-lg font-semibold">
+                    <Button type="submit" className="w-full bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white h-14 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200">
                       Send Message
+                      <Mail className="ml-2 h-5 w-5" />
                     </Button>
                   </form>
                 </CardContent>
@@ -231,9 +259,10 @@ const Contact = () => {
             {/* Contact Info Sidebar */}
             <div className="space-y-8">
               {/* Contact Information */}
-              <Card className="shadow-xl border-0">
-                <CardHeader className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white">
-                  <CardTitle className="text-xl">Contact Information</CardTitle>
+              <Card className="shadow-xl border-0 backdrop-blur-sm bg-white/95 hover:shadow-2xl transition-all duration-300">
+                <CardHeader className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-orange-600/20 to-yellow-600/20"></div>
+                  <CardTitle className="text-xl relative z-10">Contact Information</CardTitle>
                 </CardHeader>
                 <CardContent className="p-6 space-y-6">
                   <div className="flex items-start gap-4">

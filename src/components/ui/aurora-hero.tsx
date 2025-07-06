@@ -128,27 +128,12 @@ export const AuroraHero = () => {
               filter: 'drop-shadow(0 0 30px rgba(249, 115, 22, 0.4)) drop-shadow(0 0 60px rgba(251, 191, 36, 0.2))',
             }}
           >
-            <div className="w-full h-24 flex items-center justify-center">
-              <VaporizeTextCycle
-                texts={["Transform Your Business with Digital Excellence"]}
-                font={{
-                  fontFamily: "Inter, sans-serif",
-                  fontSize: "72px",
-                  fontWeight: 700
-                }}
-                color="rgb(251, 191, 36)"
-                spread={3}
-                density={8}
-                animation={{
-                  vaporizeDuration: 4,
-                  fadeInDuration: 2,
-                  waitDuration: 3
-                }}
-                direction="left-to-right"
-                alignment="center"
-                tag={Tag.H1}
-              />
-            </div>
+            <TypewriterEffect 
+              text="Transform Your Business with Digital Excellence" 
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold" 
+              delay={0.5}
+              speed={0.08}
+            />
           </motion.h1>
           
           <motion.p 

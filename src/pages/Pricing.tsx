@@ -72,11 +72,13 @@ const Pricing = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <ModernPricing 
-        plans={demoPlans}
-        title="Simple, Transparent Pricing"
-        description="Choose the package that fits your business needs, or get a custom quote for specialized requirements."
-      />
+      <div className="pt-20">
+        <ModernPricing 
+          plans={demoPlans}
+          title="Simple, Transparent Pricing"
+          description="Choose the package that fits your business needs, or get a custom quote for specialized requirements."
+        />
+      </div>
       <Footer />
     </div>
   );

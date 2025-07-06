@@ -225,9 +225,9 @@ export function ModernPricing({
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: index * 0.1 + 1 }}
-                  className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-2 text-sm font-semibold rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 text-white shadow-lg"
+                  className="absolute -top-6 left-1/2 transform -translate-x-1/2 px-6 py-2 text-sm font-bold rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 text-white shadow-xl border-2 border-white/20 z-20"
                 >
-                  <Star className="inline-block w-4 h-4 mr-1 fill-current" />
+                  <Star className="inline-block w-4 h-4 mr-2 fill-current" />
                   Most Popular
                 </motion.div>
               )}
