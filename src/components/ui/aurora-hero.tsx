@@ -137,7 +137,7 @@ export const AuroraHero = () => {
                 ease: "easeInOut"
               }}
             >
-              <VapourEffect text="Complete Digital Solutions for Modern Businesses" />
+              <VapourEffect text="Transform Your Business with Digital Excellence" />
             </motion.div>
           </motion.h1>
           
