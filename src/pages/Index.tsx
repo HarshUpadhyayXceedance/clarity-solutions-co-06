@@ -6,7 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { HeroScrollDemo } from '@/components/ui/container-scroll-demo';
+import { AuroraHero } from '@/components/ui/aurora-hero';
 import { CTASection } from '@/components/ui/cta-section';
 import RadialOrbitalTimeline from '@/components/ui/radial-orbital-timeline';
 
@@ -85,11 +85,8 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 dark:from-gray-900 dark:via-black dark:to-gray-900 light:from-gray-50 light:via-white light:to-gray-100">
       <Header />
       
-      {/* Hero Section with Scroll Animation */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-pink-900/20 dark:from-blue-900/30 dark:via-purple-900/30 dark:to-pink-900/30"></div>
-        <HeroScrollDemo />
-      </section>
+      {/* Hero Section with Aurora Effect */}
+      <AuroraHero />
 
       {/* Features Section */}
       <section id="features" className="py-24 relative">
