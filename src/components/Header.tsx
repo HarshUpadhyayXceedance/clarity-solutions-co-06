@@ -16,7 +16,7 @@ function ModernNavbar({ className }: { className?: string }) {
         <MenuItem setActive={setActive} active={active} item="Home">
           <div className="flex flex-col space-y-4 text-sm">
             <HoveredLink to="/">Home</HoveredLink>
-            <HoveredLink to="/#features">Features</HoveredLink>
+            <HoveredLink to="/#why-choose-us">Features</HoveredLink>
             <HoveredLink to="/#testimonials">Testimonials</HoveredLink>
           </div>
         </MenuItem>
