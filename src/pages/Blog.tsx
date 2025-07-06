@@ -84,21 +84,28 @@ const Blog = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-black text-white">
       <Header />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-orange-50 via-yellow-50 to-amber-50">
-        <div className="container mx-auto px-4">
+      <section className="relative pt-24 pb-16 bg-black overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-black via-purple-900/20 to-black" />
+          <div className="absolute top-20 left-20 w-32 h-32 rounded-full bg-gradient-to-r from-orange-500/20 to-purple-500/20 blur-3xl animate-pulse" />
+          <div className="absolute top-40 right-32 w-24 h-24 rounded-full bg-gradient-to-r from-violet-500/30 to-pink-500/20 blur-2xl animate-pulse" style={{animationDelay: '1s'}} />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-100 to-yellow-100 text-orange-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500/20 to-purple-500/20 backdrop-blur-sm border border-orange-500/30 text-orange-400 px-4 py-2 rounded-full text-sm font-medium mb-6">
               <TrendingUp className="h-4 w-4" />
               Latest Insights & Tips
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-orange-600 via-yellow-600 to-amber-600 bg-clip-text text-transparent mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-orange-400 via-purple-500 to-violet-600 bg-clip-text text-transparent mb-6">
               Digital Insights & Business Tips
             </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
               Expert advice on web development, technical support, and business growth strategies for small and medium businesses.
             </p>
             
@@ -107,7 +114,7 @@ const Blog = () => {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
               <Input 
                 placeholder="Search articles..." 
-                className="pl-10 h-12 border-orange-200 focus:border-orange-400"
+                className="pl-10 h-12 bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-orange-500 focus:ring-orange-500/20"
               />
             </div>
           </div>
@@ -116,19 +123,19 @@ const Blog = () => {
 
       {/* Featured Post */}
       {featuredPost && (
-        <section className="py-16">
+        <section className="py-16 bg-gradient-to-b from-black to-gray-900">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto mb-16">
               <div className="flex items-center gap-2 mb-6">
-                <Badge className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white">Featured Post</Badge>
+                <Badge className="bg-gradient-to-r from-orange-500 to-purple-500 text-white shadow-lg shadow-orange-500/25">Featured Post</Badge>
               </div>
-              <Card className="overflow-hidden shadow-2xl border-0 bg-white">
+              <Card className="overflow-hidden shadow-2xl shadow-purple-500/10 border-0 bg-gray-800 border border-gray-700">
                 <div className="lg:flex">
-                  <div className="lg:w-1/2 bg-gradient-to-br from-orange-500 via-yellow-500 to-amber-500 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-black/10"></div>
-                    <div className="p-12 flex items-center justify-center h-full min-h-[300px]">
+                  <div className="lg:w-1/2 bg-gradient-to-br from-orange-500 via-purple-500 to-violet-600 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-black/20"></div>
+                    <div className="p-12 flex items-center justify-center h-full min-h-[300px] relative z-10">
                       <div className="text-center text-white">
-                        <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-4">
                           <TrendingUp className="h-10 w-10" />
                         </div>
                         <h3 className="text-2xl font-bold">Featured Article</h3>
@@ -136,8 +143,8 @@ const Blog = () => {
                     </div>
                   </div>
                   <div className="lg:w-1/2 p-8 lg:p-12">
-                    <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
-                      <Badge variant="secondary" className="bg-orange-100 text-orange-700">
+                    <div className="flex items-center gap-4 text-sm text-gray-400 mb-6">
+                      <Badge variant="secondary" className="bg-orange-500/20 text-orange-400 border border-orange-500/30">
                         {featuredPost.category}
                       </Badge>
                       <div className="flex items-center gap-1">
@@ -149,13 +156,13 @@ const Blog = () => {
                         <span>{featuredPost.readTime}</span>
                       </div>
                     </div>
-                    <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-6 leading-tight">
+                    <h2 className="text-2xl lg:text-3xl font-bold text-white mb-6 leading-tight">
                       {featuredPost.title}
                     </h2>
-                    <p className="text-gray-600 mb-8 text-lg leading-relaxed">
+                    <p className="text-gray-300 mb-8 text-lg leading-relaxed">
                       {featuredPost.excerpt}
                     </p>
-                    <Button className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white">
+                    <Button className="bg-gradient-to-r from-orange-500 to-purple-500 hover:from-orange-600 hover:to-purple-600 text-white shadow-lg shadow-orange-500/25">
                       Read Full Article
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
@@ -168,7 +175,7 @@ const Blog = () => {
       )}
 
       {/* Blog Posts Grid */}
-      <section className="pb-20">
+      <section className="pb-20 bg-gradient-to-b from-gray-900 to-black">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             {/* Category Filter */}
@@ -180,8 +187,8 @@ const Blog = () => {
                   variant={category === selectedCategory ? "default" : "outline"}
                   size="sm"
                   className={category === selectedCategory 
-                    ? "bg-gradient-to-r from-orange-500 to-yellow-500 text-white border-0" 
-                    : "border-orange-200 text-orange-600 hover:bg-orange-50"
+                    ? "bg-gradient-to-r from-orange-500 to-purple-500 text-white border-0 shadow-lg shadow-orange-500/25" 
+                    : "border-orange-500/50 text-orange-400 hover:bg-orange-500/10 hover:border-orange-400"
                   }
                 >
                   <Tag className="h-4 w-4 mr-2" />
@@ -193,30 +200,30 @@ const Blog = () => {
             {/* Posts Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.filter(post => !post.featured).map((post, index) => (
-                <Card key={index} className="group hover:shadow-2xl transition-all duration-300 border-0 bg-white h-full">
+                <Card key={index} className="group hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 border-0 bg-gray-800/50 border border-gray-700/50 h-full">
                   <CardHeader className="pb-4">
                     <div className="flex items-center justify-between mb-4">
-                      <Badge variant="secondary" className="bg-gradient-to-r from-orange-100 to-yellow-100 text-orange-700 text-xs">
+                      <Badge variant="secondary" className="bg-gradient-to-r from-orange-500/20 to-purple-500/20 text-orange-400 border border-orange-500/30 text-xs">
                         {post.category}
                       </Badge>
-                      <div className="flex items-center gap-1 text-xs text-gray-500">
+                      <div className="flex items-center gap-1 text-xs text-gray-400">
                         <Clock className="h-3 w-3" />
                         <span>{post.readTime}</span>
                       </div>
                     </div>
-                    <h3 className="text-lg font-bold text-gray-900 line-clamp-2 mb-3 group-hover:text-orange-600 transition-colors">
+                    <h3 className="text-lg font-bold text-white line-clamp-2 mb-3 group-hover:text-orange-400 transition-colors">
                       {post.title}
                     </h3>
-                    <div className="flex items-center gap-1 text-sm text-gray-500">
+                    <div className="flex items-center gap-1 text-sm text-gray-400">
                       <Calendar className="h-4 w-4" />
                       <span>{post.date}</span>
                     </div>
                   </CardHeader>
                   <CardContent className="pt-0 flex flex-col justify-between flex-1">
-                    <p className="text-gray-600 text-sm mb-6 line-clamp-3 leading-relaxed">
+                    <p className="text-gray-300 text-sm mb-6 line-clamp-3 leading-relaxed">
                       {post.excerpt}
                     </p>
-                    <Button variant="outline" size="sm" className="w-full border-orange-200 text-orange-600 hover:bg-orange-50 group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-yellow-500 group-hover:text-white group-hover:border-0">
+                    <Button variant="outline" size="sm" className="w-full border-orange-500/50 text-orange-400 hover:bg-orange-500/10 hover:border-orange-400 group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-purple-500 group-hover:text-white group-hover:border-0 group-hover:shadow-lg group-hover:shadow-orange-500/25">
                       Read More
                       <ArrowRight className="ml-2 h-3 w-3" />
                     </Button>
@@ -229,13 +236,13 @@ const Blog = () => {
       </section>
 
       {/* Newsletter Signup */}
-      <section className="py-20 bg-gradient-to-br from-orange-50 to-yellow-50">
+      <section className="py-20 bg-gradient-to-br from-gray-900 via-black to-purple-900/20">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-600 to-yellow-600 bg-clip-text text-transparent mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-400 via-purple-500 to-violet-600 bg-clip-text text-transparent mb-4">
               Stay Updated with Digital Insights
             </h2>
-            <p className="text-gray-600 mb-8 text-lg leading-relaxed">
+            <p className="text-gray-300 mb-8 text-lg leading-relaxed">
               Get the latest tips, strategies, and insights delivered to your inbox. 
               No spam, just valuable content for growing your business.
             </p>
@@ -245,14 +252,14 @@ const Blog = () => {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 h-12 border-orange-200 focus:border-orange-400"
+                className="flex-1 h-12 bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-orange-500 focus:ring-orange-500/20"
                 required
               />
-              <Button type="submit" className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white h-12 px-8">
+              <Button type="submit" className="bg-gradient-to-r from-orange-500 to-purple-500 hover:from-orange-600 hover:to-purple-600 text-white h-12 px-8 shadow-lg shadow-orange-500/25">
                 Subscribe
               </Button>
             </form>
-            <p className="text-xs text-gray-500 mt-4">
+            <p className="text-xs text-gray-400 mt-4">
               Join 1,000+ business owners already subscribed
             </p>
           </div>
@@ -260,8 +267,8 @@ const Blog = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-orange-600 via-yellow-600 to-amber-600 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
+      <section className="py-20 bg-gradient-to-r from-orange-500 via-purple-600 to-violet-600 relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/20"></div>
         <div className="container mx-auto px-4 text-center relative">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
             Ready to Transform Your Business?
@@ -270,7 +277,7 @@ const Blog = () => {
             Don't just read about success strategies – implement them with our expert help.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button asChild size="lg" variant="secondary" className="bg-white text-orange-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold">
+            <Button asChild size="lg" variant="secondary" className="bg-white text-orange-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold shadow-lg">
               <Link to="/contact">
                 Get Free Consultation
                 <ArrowRight className="ml-2 h-5 w-5" />
