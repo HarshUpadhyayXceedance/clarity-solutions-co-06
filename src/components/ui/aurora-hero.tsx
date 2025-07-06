@@ -10,6 +10,7 @@ import {
   animate,
 } from "framer-motion";
 import { cn } from "@/lib/utils";
+import VaporizeTextCycle, { Tag } from "./vapour-text-effect";
 
 const COLORS_TOP = ["#f97316", "#fb923c", "#fdba74", "#fed7aa"];
 
@@ -127,18 +128,27 @@ export const AuroraHero = () => {
               filter: 'drop-shadow(0 0 30px rgba(249, 115, 22, 0.4)) drop-shadow(0 0 60px rgba(251, 191, 36, 0.2))',
             }}
           >
-            <motion.div
-              animate={{ 
-                y: [0, -10, 0],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              <VapourEffect text="Transform Your Business with Digital Excellence" />
-            </motion.div>
+            <div className="w-full h-24 flex items-center justify-center">
+              <VaporizeTextCycle
+                texts={["Transform Your Business with Digital Excellence"]}
+                font={{
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: "72px",
+                  fontWeight: 700
+                }}
+                color="rgb(251, 191, 36)"
+                spread={3}
+                density={8}
+                animation={{
+                  vaporizeDuration: 4,
+                  fadeInDuration: 2,
+                  waitDuration: 3
+                }}
+                direction="left-to-right"
+                alignment="center"
+                tag={Tag.H1}
+              />
+            </div>
           </motion.h1>
           
           <motion.p 
