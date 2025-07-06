@@ -111,8 +111,12 @@ const Index = () => {
                 <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 mb-6 leading-relaxed">
                   Custom, responsive websites that convert visitors into customers with modern design and powerful functionality.
                 </p>
-                <Button asChild variant="outline" className="border-blue-400/50 text-blue-400 hover:bg-blue-400/10">
-                  <Link to="/services">Explore</Link>
+                <Button 
+                  variant="outline" 
+                  className="border-blue-400/50 text-blue-400 hover:bg-blue-400/10"
+                  onClick={() => document.getElementById('why-choose-us')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Explore
                 </Button>
               </CardContent>
             </Card>
@@ -126,8 +130,12 @@ const Index = () => {
                 <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 mb-6 leading-relaxed">
                   Reliable ongoing support to keep your digital presence running smoothly while you focus on business growth.
                 </p>
-                <Button asChild variant="outline" className="border-green-400/50 text-green-400 hover:bg-green-400/10">
-                  <Link to="/services">Learn More</Link>
+                <Button 
+                  variant="outline" 
+                  className="border-green-400/50 text-green-400 hover:bg-green-400/10"
+                  onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Learn More
                 </Button>
               </CardContent>
             </Card>
@@ -141,8 +149,12 @@ const Index = () => {
                 <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 mb-6 leading-relaxed">
                   Strategic guidance in technical, financial, and operational areas to optimize your business growth.
                 </p>
-                <Button asChild variant="outline" className="border-purple-400/50 text-purple-400 hover:bg-purple-400/10">
-                  <Link to="/services">Discover</Link>
+                <Button 
+                  variant="outline" 
+                  className="border-purple-400/50 text-purple-400 hover:bg-purple-400/10"
+                  onClick={() => document.getElementById('why-choose-us')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Discover
                 </Button>
               </CardContent>
             </Card>
@@ -151,8 +163,8 @@ const Index = () => {
       </section>
 
       {/* Why Choose Us - Orbital Timeline */}
-      <section className="py-24 relative">
-        <div className="absolute inset-0 bg-gradient-to-l from-purple-900/20 to-blue-900/20"></div>
+      <section id="why-choose-us" className="py-24 relative">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/15 to-pink-500/10"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">

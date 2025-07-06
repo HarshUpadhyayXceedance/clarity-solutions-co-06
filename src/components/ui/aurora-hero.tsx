@@ -129,7 +129,7 @@ export const AuroraHero = () => {
             }}
           >
             <TypewriterEffect 
-              text="Transform Your Business with Digital Excellence" 
+              text="Elevate with Digital Brilliance" 
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold" 
               delay={0.5}
               speed={0.08}
