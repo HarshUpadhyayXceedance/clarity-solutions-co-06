@@ -103,13 +103,33 @@ export const AuroraHero = () => {
         <span className="mb-1.5 inline-block rounded-full bg-orange-500/20 border border-orange-400/30 px-3 py-1.5 text-sm text-orange-300">
           <TypewriterEffect text="Transform Your Business" speed={0.08} />
         </span>
-        <h1 className="max-w-4xl bg-gradient-to-br from-white via-orange-100 to-orange-300 bg-clip-text text-center text-3xl font-medium leading-tight text-transparent sm:text-5xl sm:leading-tight md:text-7xl md:leading-tight">
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="max-w-4xl text-center text-3xl font-bold leading-tight sm:text-5xl sm:leading-tight md:text-7xl md:leading-tight"
+          style={{
+            background: 'linear-gradient(135deg, #ffffff 0%, #fbbf24 50%, #f97316 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            filter: 'drop-shadow(0 0 20px rgba(249, 115, 22, 0.3))',
+          }}
+        >
           <VapourEffect text="Complete Digital Solutions for Modern Businesses" />
-        </h1>
-        <p className="my-6 max-w-2xl text-center text-base leading-relaxed md:text-lg md:leading-relaxed text-gray-300">
+        </motion.h1>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1 }}
+          className="my-6 max-w-2xl text-center text-base leading-relaxed md:text-lg md:leading-relaxed text-white/90 drop-shadow-lg"
+          style={{
+            textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
+          }}
+        >
           We empower small and medium businesses with cutting-edge web development, 
           reliable technical support, and strategic business consultancy to drive growth and success.
-        </p>
+        </motion.p>
         <motion.div
           className="flex flex-col sm:flex-row gap-4 items-center"
         >
