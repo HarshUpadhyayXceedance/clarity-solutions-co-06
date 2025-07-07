@@ -3,13 +3,14 @@
 import React, { useState } from "react";
 import { HoveredLink, Menu, MenuItem } from "@/components/ui/navbar-menu";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { Link } from 'react-router-dom';
 
 function ModernNavbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
   return (
     <div
-      className={cn("fixed top-4 sm:top-10 inset-x-0 max-w-2xl mx-auto z-40 px-4", className)}
+      className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}
     >
       <Menu setActive={setActive}>
         <MenuItem setActive={setActive} active={active} item="Home">
@@ -41,13 +42,14 @@ function ModernNavbar({ className }: { className?: string }) {
           </div>
         </MenuItem>
       </Menu>
-      <div className="fixed top-4 right-4 z-50">
+      <div className="fixed top-4 right-4 flex items-center gap-3">
         <Link 
           to="/auth" 
-          className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-orange-500 via-violet-500 to-blue-500 rounded-lg hover:opacity-90 transition-opacity shadow-lg backdrop-blur-sm"
+          className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-orange-500 via-violet-500 to-blue-500 rounded-lg hover:opacity-90 transition-opacity"
         >
           Login
         </Link>
+        <ThemeToggle />
       </div>
     </div>
   );

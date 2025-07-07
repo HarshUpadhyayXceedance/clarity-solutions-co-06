@@ -158,7 +158,7 @@ export function AuthenticationSystem() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-black relative overflow-hidden flex items-center justify-center pt-20">
+    <div className="min-h-screen w-screen bg-black relative overflow-hidden flex items-center justify-center">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-orange-900/20 via-violet-900/30 to-blue-900/20" />
       <div className="absolute inset-0 bg-gradient-to-t from-black via-gray-900/50 to-black/80" />
@@ -203,7 +203,7 @@ export function AuthenticationSystem() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="w-full max-w-md mx-auto px-4 sm:px-6 relative z-10"
+        className="w-full max-w-md mx-auto px-4 sm:px-0 relative z-10"
         style={{ perspective: 1500 }}
       >
         <motion.div
@@ -278,14 +278,14 @@ export function AuthenticationSystem() {
             </div>
 
             {/* Glass card background */}
-            <div className="relative bg-gray-900/70 backdrop-blur-2xl rounded-2xl p-6 sm:p-8 border border-white/[0.12] shadow-2xl overflow-hidden">
+            <div className="relative bg-gray-900/60 backdrop-blur-2xl rounded-2xl p-6 sm:p-8 border border-white/[0.08] shadow-2xl overflow-hidden">
               {/* Logo and header */}
               <div className="text-center space-y-1 mb-6">
                 <motion.div
                   initial={{ scale: 0.5, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ type: "spring", duration: 0.8 }}
-                  className="mx-auto w-16 h-16 rounded-xl border border-orange-500/30 flex items-center justify-center relative overflow-hidden mb-6"
+                  className="mx-auto w-14 h-14 rounded-xl border border-orange-500/20 flex items-center justify-center relative overflow-hidden mb-4"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-violet-500/10 to-blue-500/10 opacity-80" />
                   <motion.div
