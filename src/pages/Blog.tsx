@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
+import featuredBg from '@/assets/featured-article-bg.jpg';
 
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -123,52 +124,116 @@ const Blog = () => {
 
       {/* Featured Post */}
       {featuredPost && (
-        <section className="py-16 bg-gradient-to-b from-black to-gray-900">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto mb-16">
-              <div className="flex items-center gap-2 mb-6">
-                <Badge className="bg-gradient-to-r from-orange-500 to-purple-500 text-white shadow-lg shadow-orange-500/25">Featured Post</Badge>
+        <section className="py-20 bg-gradient-to-b from-black via-gray-900/50 to-black relative overflow-hidden">
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0">
+            <div className="absolute top-10 left-10 w-72 h-72 rounded-full bg-gradient-to-r from-orange-500/10 to-purple-500/10 blur-3xl animate-pulse" />
+            <div className="absolute bottom-10 right-10 w-64 h-64 rounded-full bg-gradient-to-r from-violet-500/10 to-pink-500/10 blur-3xl animate-pulse" style={{animationDelay: '2s'}} />
+          </div>
+          
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-7xl mx-auto">
+              {/* Section Header */}
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500/20 to-purple-500/20 backdrop-blur-sm border border-orange-500/30 text-orange-400 px-6 py-3 rounded-full text-sm font-medium mb-6">
+                  <TrendingUp className="h-4 w-4" />
+                  Featured Article
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-400 via-purple-500 to-violet-600 bg-clip-text text-transparent mb-4">
+                  Editor's Choice
+                </h2>
+                <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+                  Our most comprehensive guide to digital transformation success
+                </p>
               </div>
-              <Card className="overflow-hidden shadow-2xl shadow-purple-500/10 border-0 bg-gray-800 border border-gray-700">
-                <div className="lg:flex">
-                  <div className="lg:w-1/2 bg-gradient-to-br from-orange-500 via-purple-500 to-violet-600 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-black/20"></div>
-                    <div className="p-12 flex items-center justify-center h-full min-h-[300px] relative z-10">
-                      <div className="text-center text-white">
-                        <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-4">
-                          <TrendingUp className="h-10 w-10" />
+
+              {/* Featured Article Card */}
+              <div className="relative group">
+                {/* Glassmorphism Container */}
+                <div className="relative bg-gradient-to-br from-gray-900/40 via-gray-800/30 to-gray-900/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden shadow-2xl shadow-orange-500/10 hover:shadow-orange-500/20 transition-all duration-700 hover:scale-[1.02] hover:border-orange-500/30">
+                  {/* Glare Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  
+                  {/* Moving Glare Animation */}
+                  <div className="absolute -inset-x-4 -top-4 h-px bg-gradient-to-r from-transparent via-orange-500/50 to-transparent group-hover:animate-pulse" />
+                  
+                  <div className="lg:flex h-full">
+                    {/* Image Section */}
+                    <div className="lg:w-1/2 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-purple-500/20 to-violet-600/20 z-10" />
+                      <img 
+                        src={featuredBg} 
+                        alt="Featured Article" 
+                        className="w-full h-full object-cover min-h-[400px] lg:min-h-[500px] transform group-hover:scale-110 transition-transform duration-700"
+                      />
+                      
+                      {/* Floating Glass Elements */}
+                      <div className="absolute top-8 left-8 w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 group-hover:bg-white/20 transition-colors duration-500">
+                        <TrendingUp className="h-8 w-8 text-orange-400" />
+                      </div>
+                      
+                      {/* Article Type Badge */}
+                      <div className="absolute bottom-6 left-6 bg-black/50 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium border border-white/20">
+                        Must Read
+                      </div>
+                    </div>
+
+                    {/* Content Section */}
+                    <div className="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
+                      {/* Meta Information */}
+                      <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400 mb-8">
+                        <Badge className="bg-gradient-to-r from-orange-500/20 to-purple-500/20 text-orange-400 border border-orange-500/30 backdrop-blur-sm">
+                          {featuredPost.category}
+                        </Badge>
+                        <div className="flex items-center gap-2 bg-gray-800/50 backdrop-blur-sm px-3 py-1 rounded-full border border-gray-700/50">
+                          <Calendar className="h-4 w-4" />
+                          <span>{featuredPost.date}</span>
                         </div>
-                        <h3 className="text-2xl font-bold">Featured Article</h3>
+                        <div className="flex items-center gap-2 bg-gray-800/50 backdrop-blur-sm px-3 py-1 rounded-full border border-gray-700/50">
+                          <Clock className="h-4 w-4" />
+                          <span>{featuredPost.readTime}</span>
+                        </div>
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="text-2xl lg:text-4xl font-bold text-white mb-6 leading-tight group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:via-purple-500 group-hover:to-violet-600 group-hover:bg-clip-text transition-all duration-500">
+                        {featuredPost.title}
+                      </h3>
+
+                      {/* Excerpt */}
+                      <p className="text-gray-300 mb-8 text-lg leading-relaxed line-clamp-4">
+                        {featuredPost.excerpt}
+                      </p>
+
+                      {/* CTA Button */}
+                      <div className="flex gap-4">
+                        <Button className="bg-gradient-to-r from-orange-500 to-purple-500 hover:from-orange-600 hover:to-purple-600 text-white shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 transform hover:scale-105 transition-all duration-300 px-8 py-3 text-lg font-semibold">
+                          Read Full Article
+                          <ArrowRight className="ml-2 h-5 w-5" />
+                        </Button>
+                        <Button variant="outline" className="border-orange-500/50 text-orange-400 hover:bg-orange-500/10 hover:border-orange-400 backdrop-blur-sm">
+                          Save for Later
+                        </Button>
+                      </div>
+
+                      {/* Social Proof */}
+                      <div className="flex items-center gap-4 mt-8 pt-6 border-t border-gray-700/50">
+                        <div className="flex items-center gap-2 text-sm text-gray-400">
+                          <div className="flex -space-x-2">
+                            <div className="w-6 h-6 rounded-full bg-gradient-to-r from-orange-500 to-purple-500 border-2 border-gray-800" />
+                            <div className="w-6 h-6 rounded-full bg-gradient-to-r from-purple-500 to-violet-500 border-2 border-gray-800" />
+                            <div className="w-6 h-6 rounded-full bg-gradient-to-r from-violet-500 to-pink-500 border-2 border-gray-800" />
+                          </div>
+                          <span>2.3k readers</span>
+                        </div>
+                        <div className="text-sm text-gray-400">
+                          <span className="text-green-400">●</span> Trending now
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="lg:w-1/2 p-8 lg:p-12">
-                    <div className="flex items-center gap-4 text-sm text-gray-400 mb-6">
-                      <Badge variant="secondary" className="bg-orange-500/20 text-orange-400 border border-orange-500/30">
-                        {featuredPost.category}
-                      </Badge>
-                      <div className="flex items-center gap-1">
-                        <Calendar className="h-4 w-4" />
-                        <span>{featuredPost.date}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Clock className="h-4 w-4" />
-                        <span>{featuredPost.readTime}</span>
-                      </div>
-                    </div>
-                    <h2 className="text-2xl lg:text-3xl font-bold text-white mb-6 leading-tight">
-                      {featuredPost.title}
-                    </h2>
-                    <p className="text-gray-300 mb-8 text-lg leading-relaxed">
-                      {featuredPost.excerpt}
-                    </p>
-                    <Button className="bg-gradient-to-r from-orange-500 to-purple-500 hover:from-orange-600 hover:to-purple-600 text-white shadow-lg shadow-orange-500/25">
-                      Read Full Article
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
                   </div>
                 </div>
-              </Card>
+              </div>
             </div>
           </div>
         </section>
