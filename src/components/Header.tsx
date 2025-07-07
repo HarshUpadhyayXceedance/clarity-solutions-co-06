@@ -42,7 +42,13 @@ function ModernNavbar({ className }: { className?: string }) {
           </div>
         </MenuItem>
       </Menu>
-      <div className="fixed top-4 right-4">
+      <div className="fixed top-4 right-4 flex items-center gap-3">
+        <Link 
+          to="/auth" 
+          className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-orange-500 via-violet-500 to-blue-500 rounded-lg hover:opacity-90 transition-opacity"
+        >
+          Login
+        </Link>
         <ThemeToggle />
       </div>
     </div>
