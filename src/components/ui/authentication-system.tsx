@@ -158,10 +158,10 @@ export function AuthenticationSystem() {
   };
 
   return (
-    <div className="min-h-screen w-screen bg-black relative overflow-hidden flex items-center justify-center">
+    <div className="min-h-screen w-screen bg-background relative overflow-hidden flex items-center justify-center pt-20">
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-900/20 via-violet-900/30 to-blue-900/20" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-gray-900/50 to-black/80" />
+      <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-violet-500/5 to-blue-500/5" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/90 to-background/80" />
       
       {/* Subtle noise texture overlay */}
       <div className="absolute inset-0 opacity-[0.03] mix-blend-soft-light" 
@@ -278,7 +278,7 @@ export function AuthenticationSystem() {
             </div>
 
             {/* Glass card background */}
-            <div className="relative bg-gray-900/60 backdrop-blur-2xl rounded-2xl p-6 sm:p-8 border border-white/[0.08] shadow-2xl overflow-hidden">
+            <div className="relative bg-card/90 backdrop-blur-2xl rounded-2xl p-6 sm:p-8 border border-border shadow-2xl overflow-hidden">
               {/* Logo and header */}
               <div className="text-center space-y-1 mb-6">
                 <motion.div
@@ -340,10 +340,10 @@ export function AuthenticationSystem() {
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <h1 className="text-xl sm:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-violet-400 to-blue-400">
+                    <h1 className="text-xl sm:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-violet-500 to-blue-500">
                       {activeTab === 'signin' ? 'Welcome Back' : 'Create Account'}
                     </h1>
-                    <p className="text-white/60 text-xs sm:text-sm">
+                    <p className="text-muted-foreground text-xs sm:text-sm">
                       {activeTab === 'signin' 
                         ? 'Sign in to continue to DigitalBridge' 
                         : 'Join DigitalBridge today'
@@ -376,7 +376,7 @@ export function AuthenticationSystem() {
                       >
                         <div className="relative flex items-center overflow-hidden rounded-lg">
                           <User className={`absolute left-3 w-4 h-4 transition-all duration-300 ${
-                            focusedInput === "name" ? 'text-white' : 'text-white/40'
+                            focusedInput === "name" ? 'text-foreground' : 'text-muted-foreground'
                           }`} />
                           
                           <Input
@@ -386,7 +386,7 @@ export function AuthenticationSystem() {
                             onChange={(e) => handleInputChange('name', e.target.value)}
                             onFocus={() => setFocusedInput("name")}
                             onBlur={() => setFocusedInput(null)}
-                            className="w-full bg-gradient-to-r from-orange-500/5 via-violet-500/5 to-blue-500/5 border-transparent focus:border-orange-500/30 text-white placeholder:text-white/40 h-10 sm:h-11 transition-all duration-300 pl-10 pr-3 focus:bg-gradient-to-r focus:from-orange-500/10 focus:via-violet-500/10 focus:to-blue-500/10"
+                            className="w-full bg-background/50 border-border focus:border-orange-500/50 text-foreground placeholder:text-muted-foreground h-10 sm:h-11 transition-all duration-300 pl-10 pr-3"
                             required={activeTab === 'signup'}
                           />
                         </div>
@@ -402,7 +402,7 @@ export function AuthenticationSystem() {
                     >
                       <div className="relative flex items-center overflow-hidden rounded-lg">
                         <Mail className={`absolute left-3 w-4 h-4 transition-all duration-300 ${
-                          focusedInput === "email" ? 'text-white' : 'text-white/40'
+                          focusedInput === "email" ? 'text-foreground' : 'text-muted-foreground'
                         }`} />
                         
                         <Input
@@ -412,7 +412,7 @@ export function AuthenticationSystem() {
                           onChange={(e) => handleInputChange('email', e.target.value)}
                           onFocus={() => setFocusedInput("email")}
                           onBlur={() => setFocusedInput(null)}
-                          className="w-full bg-gradient-to-r from-orange-500/5 via-violet-500/5 to-blue-500/5 border-transparent focus:border-violet-500/30 text-white placeholder:text-white/40 h-10 sm:h-11 transition-all duration-300 pl-10 pr-3 focus:bg-gradient-to-r focus:from-orange-500/10 focus:via-violet-500/10 focus:to-blue-500/10"
+                          className="w-full bg-background/50 border-border focus:border-violet-500/50 text-foreground placeholder:text-muted-foreground h-10 sm:h-11 transition-all duration-300 pl-10 pr-3"
                           required
                         />
                       </div>
@@ -427,7 +427,7 @@ export function AuthenticationSystem() {
                     >
                       <div className="relative flex items-center overflow-hidden rounded-lg">
                         <Lock className={`absolute left-3 w-4 h-4 transition-all duration-300 ${
-                          focusedInput === "password" ? 'text-white' : 'text-white/40'
+                          focusedInput === "password" ? 'text-foreground' : 'text-muted-foreground'
                         }`} />
                         
                         <Input
@@ -437,7 +437,7 @@ export function AuthenticationSystem() {
                           onChange={(e) => handleInputChange('password', e.target.value)}
                           onFocus={() => setFocusedInput("password")}
                           onBlur={() => setFocusedInput(null)}
-                          className="w-full bg-gradient-to-r from-orange-500/5 via-violet-500/5 to-blue-500/5 border-transparent focus:border-blue-500/30 text-white placeholder:text-white/40 h-10 sm:h-11 transition-all duration-300 pl-10 pr-10 focus:bg-gradient-to-r focus:from-orange-500/10 focus:via-violet-500/10 focus:to-blue-500/10"
+                          className="w-full bg-background/50 border-border focus:border-blue-500/50 text-foreground placeholder:text-muted-foreground h-10 sm:h-11 transition-all duration-300 pl-10 pr-10"
                           required
                         />
                         
@@ -446,9 +446,9 @@ export function AuthenticationSystem() {
                           className="absolute right-3 cursor-pointer"
                         >
                           {showPassword ? (
-                            <Eye className="w-4 h-4 text-white/40 hover:text-white transition-colors duration-300" />
+                            <Eye className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors duration-300" />
                           ) : (
-                            <EyeOff className="w-4 h-4 text-white/40 hover:text-white transition-colors duration-300" />
+                            <EyeOff className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors duration-300" />
                           )}
                         </div>
                       </div>
@@ -465,7 +465,7 @@ export function AuthenticationSystem() {
                       >
                         <div className="relative flex items-center overflow-hidden rounded-lg">
                           <Lock className={`absolute left-3 w-4 h-4 transition-all duration-300 ${
-                            focusedInput === "confirmPassword" ? 'text-white' : 'text-white/40'
+                            focusedInput === "confirmPassword" ? 'text-foreground' : 'text-muted-foreground'
                           }`} />
                           
                           <Input
@@ -475,7 +475,7 @@ export function AuthenticationSystem() {
                             onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
                             onFocus={() => setFocusedInput("confirmPassword")}
                             onBlur={() => setFocusedInput(null)}
-                            className="w-full bg-gradient-to-r from-orange-500/5 via-violet-500/5 to-blue-500/5 border-transparent focus:border-orange-500/30 text-white placeholder:text-white/40 h-10 sm:h-11 transition-all duration-300 pl-10 pr-10 focus:bg-gradient-to-r focus:from-orange-500/10 focus:via-violet-500/10 focus:to-blue-500/10"
+                            className="w-full bg-background/50 border-border focus:border-orange-500/50 text-foreground placeholder:text-muted-foreground h-10 sm:h-11 transition-all duration-300 pl-10 pr-10"
                             required={activeTab === 'signup'}
                           />
                           
@@ -484,9 +484,9 @@ export function AuthenticationSystem() {
                             className="absolute right-3 cursor-pointer"
                           >
                             {showConfirmPassword ? (
-                              <Eye className="w-4 h-4 text-white/40 hover:text-white transition-colors duration-300" />
+                              <Eye className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors duration-300" />
                             ) : (
-                              <EyeOff className="w-4 h-4 text-white/40 hover:text-white transition-colors duration-300" />
+                              <EyeOff className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors duration-300" />
                             )}
                           </div>
                         </div>
@@ -505,13 +505,13 @@ export function AuthenticationSystem() {
                             type="checkbox"
                             checked={rememberMe}
                             onChange={() => setRememberMe(!rememberMe)}
-                            className="appearance-none h-4 w-4 rounded border border-white/20 bg-white/5 checked:bg-white checked:border-white focus:outline-none focus:ring-1 focus:ring-white/30 transition-all duration-200"
+                            className="appearance-none h-4 w-4 rounded border border-border bg-background checked:bg-primary checked:border-primary focus:outline-none focus:ring-1 focus:ring-ring transition-all duration-200"
                           />
                           {rememberMe && (
                             <motion.div 
                               initial={{ opacity: 0, scale: 0.5 }}
                               animate={{ opacity: 1, scale: 1 }}
-                              className="absolute inset-0 flex items-center justify-center text-black pointer-events-none"
+                              className="absolute inset-0 flex items-center justify-center text-primary-foreground pointer-events-none"
                             >
                               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                                 <polyline points="20 6 9 17 4 12"></polyline>
@@ -519,13 +519,13 @@ export function AuthenticationSystem() {
                             </motion.div>
                           )}
                         </div>
-                        <label htmlFor="remember-me" className="text-xs text-white/60 hover:text-white/80 transition-colors duration-200">
+                        <label htmlFor="remember-me" className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-200">
                           Remember me
                         </label>
                       </div>
                       
                       <div className="text-xs relative group/link">
-                        <button type="button" className="text-white/60 hover:text-white transition-colors duration-200">
+                        <button type="button" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
                           Forgot password?
                         </button>
                       </div>
@@ -542,7 +542,7 @@ export function AuthenticationSystem() {
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 via-violet-500/20 to-blue-500/20 rounded-lg blur-lg opacity-0 group-hover/button:opacity-100 transition-opacity duration-300" />
                     
-                    <div className="relative overflow-hidden bg-gradient-to-r from-orange-500 via-violet-500 to-blue-500 text-white font-medium h-10 sm:h-11 rounded-lg transition-all duration-300 flex items-center justify-center">
+                    <div className="relative overflow-hidden bg-gradient-to-r from-orange-500 via-violet-500 to-blue-500 text-primary-foreground font-medium h-10 sm:h-11 rounded-lg transition-all duration-300 flex items-center justify-center">
                       <motion.div 
                         className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -z-10"
                         animate={{ 
@@ -569,7 +569,7 @@ export function AuthenticationSystem() {
                             exit={{ opacity: 0 }}
                             className="flex items-center justify-center"
                           >
-                            <div className="w-4 h-4 border-2 border-white/70 border-t-transparent rounded-full animate-spin" />
+                            <div className="w-4 h-4 border-2 border-primary-foreground/70 border-t-transparent rounded-full animate-spin" />
                           </motion.div>
                         ) : (
                           <motion.span
@@ -589,16 +589,16 @@ export function AuthenticationSystem() {
 
                   {/* Divider */}
                   <div className="relative mt-4 mb-4 flex items-center">
-                    <div className="flex-grow border-t border-white/5"></div>
+                    <div className="flex-grow border-t border-border"></div>
                     <motion.span 
-                      className="mx-3 text-xs text-white/40"
+                      className="mx-3 text-xs text-muted-foreground"
                       initial={{ opacity: 0.7 }}
                       animate={{ opacity: [0.7, 0.9, 0.7] }}
                       transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                     >
                       or
                     </motion.span>
-                    <div className="flex-grow border-t border-white/5"></div>
+                    <div className="flex-grow border-t border-border"></div>
                   </div>
 
                   {/* Google Sign In */}
@@ -610,10 +610,10 @@ export function AuthenticationSystem() {
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-violet-500/10 to-blue-500/10 rounded-lg blur opacity-0 group-hover/google:opacity-100 transition-opacity duration-300" />
                     
-                    <div className="relative overflow-hidden bg-gradient-to-r from-orange-500/5 via-violet-500/5 to-blue-500/5 text-white font-medium h-10 sm:h-11 rounded-lg border border-gradient-to-r border-orange-500/20 hover:border-violet-500/30 transition-all duration-300 flex items-center justify-center gap-2">
-                      <div className="w-4 h-4 flex items-center justify-center text-orange-400 group-hover/google:text-violet-400 transition-colors duration-300 font-bold">G</div>
+                    <div className="relative overflow-hidden bg-background/50 text-foreground font-medium h-10 sm:h-11 rounded-lg border border-border hover:border-orange-500/50 transition-all duration-300 flex items-center justify-center gap-2">
+                      <div className="w-4 h-4 flex items-center justify-center text-orange-500 group-hover/google:text-violet-500 transition-colors duration-300 font-bold">G</div>
                       
-                      <span className="text-white/80 group-hover/google:text-white transition-colors text-xs sm:text-sm">
+                      <span className="text-muted-foreground group-hover/google:text-foreground transition-colors text-xs sm:text-sm">
                         {activeTab === 'signin' ? 'Sign in with Google' : 'Sign up with Google'}
                       </span>
                       

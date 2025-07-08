@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { HoveredLink, Menu, MenuItem } from "@/components/ui/navbar-menu";
 import { cn } from "@/lib/utils";
-import { ThemeToggle } from '@/components/ThemeToggle';
+
 import { Link } from 'react-router-dom';
 
 function ModernNavbar({ className }: { className?: string }) {
@@ -42,14 +42,13 @@ function ModernNavbar({ className }: { className?: string }) {
           </div>
         </MenuItem>
       </Menu>
-      <div className="fixed top-4 right-4 flex items-center gap-3">
+      <div className="fixed top-4 right-4">
         <Link 
           to="/auth" 
           className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-orange-500 via-violet-500 to-blue-500 rounded-lg hover:opacity-90 transition-opacity"
         >
           Login
         </Link>
-        <ThemeToggle />
       </div>
     </div>
   );
