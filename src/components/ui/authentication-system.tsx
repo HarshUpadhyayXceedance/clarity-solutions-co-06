@@ -4,6 +4,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
 import { Mail, Lock, Eye, EyeOff, ArrowRight, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { supabase } from '@/integrations/supabase/client';
+import { useNavigate } from 'react-router-dom';
 
 // Input Component
 function Input({ className, type, ...props }: React.ComponentProps<"input">) {
@@ -109,6 +111,7 @@ const BoxReveal = React.memo(function BoxReveal({
 
 // Main Authentication Component
 export function AuthenticationSystem() {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<'signin' | 'signup'>('signin');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -121,6 +124,17 @@ export function AuthenticationSystem() {
   const [isLoading, setIsLoading] = useState(false);
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
   const [rememberMe, setRememberMe] = useState(false);
+
+  // Check if user is already logged in and redirect
+  useEffect(() => {
+    const checkAuth = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        navigate('/');
+      }
+    };
+    checkAuth();
+  }, [navigate]);
 
   // For 3D card effect
   const mouseX = useMotionValue(0);
@@ -143,11 +157,48 @@ export function AuthenticationSystem() {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setIsLoading(true);
-    console.log(`${activeTab} submitted:`, formData);
-    setTimeout(() => setIsLoading(false), 2000);
+    
+    try {
+      if (activeTab === 'signin') {
+        const { error } = await supabase.auth.signInWithPassword({
+          email: formData.email,
+          password: formData.password,
+        });
+        
+        if (error) {
+          console.error('Sign in error:', error.message);
+          // You can add toast notification here
+        } else {
+          navigate('/');
+        }
+      } else {
+        const { error } = await supabase.auth.signUp({
+          email: formData.email,
+          password: formData.password,
+          options: {
+            emailRedirectTo: `${window.location.origin}/`,
+            data: {
+              display_name: formData.name,
+            }
+          }
+        });
+        
+        if (error) {
+          console.error('Sign up error:', error.message);
+          // You can add toast notification here
+        } else {
+          console.log('Check your email for verification link');
+          // You can add toast notification here
+        }
+      }
+    } catch (error) {
+      console.error('Authentication error:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const switchTab = (tab: 'signin' | 'signup') => {
@@ -606,6 +657,15 @@ export function AuthenticationSystem() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     type="button"
+                    onClick={async () => {
+                      const { error } = await supabase.auth.signInWithOAuth({
+                        provider: 'google',
+                        options: {
+                          redirectTo: `${window.location.origin}/`
+                        }
+                      });
+                      if (error) console.error('Google sign in error:', error.message);
+                    }}
                     className="w-full relative group/google"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-violet-500/10 to-blue-500/10 rounded-lg blur opacity-0 group-hover/google:opacity-100 transition-opacity duration-300" />
