@@ -1,66 +1,14 @@
-
-import React, { useState } from 'react';
+import React from 'react';
 import { Mail, Phone, MapPin, Clock, CheckCircle, MessageSquare, Calendar as CalendarIcon } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ContactForm from '@/components/ContactForm';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    phone: '',
-    service: '',
-    budget: '',
-    message: ''
-  });
-
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Basic validation
-    if (!formData.name || !formData.email || !formData.message) {
-      toast({
-        title: "Please fill in required fields",
-        description: "Name, email, and message are required.",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    // Simulate form submission
-    console.log('Form submitted:', formData);
-    
-    toast({
-      title: "Message sent successfully!",
-      description: "We'll get back to you within 24 hours.",
-    });
-
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      company: '',
-      phone: '',
-      service: '',
-      budget: '',
-      message: ''
-    });
-  };
 
   const handleConsultationClick = () => {
     toast({
@@ -122,138 +70,7 @@ const Contact = () => {
             
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <Card className="shadow-2xl shadow-purple-500/10 border-0 backdrop-blur-sm bg-gray-800/50 border border-gray-700/50 hover:shadow-3xl transition-all duration-300">
-                <CardHeader className="bg-gradient-to-r from-orange-500/10 to-purple-500/10 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 to-purple-500/5"></div>
-                  <div className="relative z-10">
-                    <CardTitle className="text-2xl md:text-3xl text-white mb-2">Send Us a Message</CardTitle>
-                    <p className="text-gray-300 text-lg leading-relaxed">
-                      Fill out the form below and we'll get back to you within 24 hours with a personalized response.
-                    </p>
-                  </div>
-                </CardHeader>
-                <CardContent className="p-8 md:p-10">
-                  <form onSubmit={handleSubmit} className="space-y-8">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div className="group">
-                        <label htmlFor="name" className="block text-sm font-semibold text-gray-300 mb-3 group-focus-within:text-orange-400 transition-colors">
-                          Full Name *
-                        </label>
-                        <Input
-                          id="name"
-                          type="text"
-                          value={formData.name}
-                          onChange={(e) => handleInputChange('name', e.target.value)}
-                          placeholder="Enter your full name"
-                          className="h-14 bg-gray-900/50 border-2 border-gray-600 text-white placeholder-gray-400 hover:border-orange-500/50 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 rounded-xl transition-all duration-200 text-lg"
-                          required
-                        />
-                      </div>
-                      <div className="group">
-                        <label htmlFor="email" className="block text-sm font-semibold text-gray-300 mb-3 group-focus-within:text-orange-400 transition-colors">
-                          Email Address *
-                        </label>
-                        <Input
-                          id="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={(e) => handleInputChange('email', e.target.value)}
-                          placeholder="your@email.com"
-                          className="h-14 bg-gray-900/50 border-2 border-gray-600 text-white placeholder-gray-400 hover:border-orange-500/50 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 rounded-xl transition-all duration-200 text-lg"
-                          required
-                        />
-                      </div>
-                    </div>
-                    
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <label htmlFor="company" className="block text-sm font-semibold text-gray-300 mb-2">
-                          Company Name
-                        </label>
-                        <Input
-                          id="company"
-                          type="text"
-                          value={formData.company}
-                          onChange={(e) => handleInputChange('company', e.target.value)}
-                          placeholder="Your company name"
-                          className="h-12 bg-gray-900/50 border-gray-600 text-white placeholder-gray-400 focus:border-orange-500 focus:ring-orange-500/20"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="phone" className="block text-sm font-semibold text-gray-300 mb-2">
-                          Phone Number
-                        </label>
-                        <Input
-                          id="phone"
-                          type="tel"
-                          value={formData.phone}
-                          onChange={(e) => handleInputChange('phone', e.target.value)}
-                          placeholder="(555) 123-4567"
-                          className="h-12 bg-gray-900/50 border-gray-600 text-white placeholder-gray-400 focus:border-orange-500 focus:ring-orange-500/20"
-                        />
-                      </div>
-                    </div>
-                    
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <label htmlFor="service" className="block text-sm font-semibold text-gray-300 mb-2">
-                          Service Interest
-                        </label>
-                        <Select onValueChange={(value) => handleInputChange('service', value)}>
-                          <SelectTrigger className="h-12 bg-gray-900/50 border-gray-600 text-white focus:border-orange-500 focus:ring-orange-500/20">
-                            <SelectValue placeholder="Select a service" />
-                          </SelectTrigger>
-                          <SelectContent className="bg-gray-800 border-gray-700">
-                            <SelectItem value="website" className="text-white hover:bg-gray-700">Website Development</SelectItem>
-                            <SelectItem value="support" className="text-white hover:bg-gray-700">Technical Support</SelectItem>
-                            <SelectItem value="consultancy" className="text-white hover:bg-gray-700">Business Consultancy</SelectItem>
-                            <SelectItem value="complete" className="text-white hover:bg-gray-700">Complete Package</SelectItem>
-                            <SelectItem value="custom" className="text-white hover:bg-gray-700">Custom Solution</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div>
-                        <label htmlFor="budget" className="block text-sm font-semibold text-gray-300 mb-2">
-                          Budget Range
-                        </label>
-                        <Select onValueChange={(value) => handleInputChange('budget', value)}>
-                          <SelectTrigger className="h-12 bg-gray-900/50 border-gray-600 text-white focus:border-orange-500 focus:ring-orange-500/20">
-                            <SelectValue placeholder="Select budget range" />
-                          </SelectTrigger>
-                          <SelectContent className="bg-gray-800 border-gray-700">
-                            <SelectItem value="under-1k" className="text-white hover:bg-gray-700">Under $1,000</SelectItem>
-                            <SelectItem value="1k-5k" className="text-white hover:bg-gray-700">$1,000 - $5,000</SelectItem>
-                            <SelectItem value="5k-10k" className="text-white hover:bg-gray-700">$5,000 - $10,000</SelectItem>
-                            <SelectItem value="10k-25k" className="text-white hover:bg-gray-700">$10,000 - $25,000</SelectItem>
-                            <SelectItem value="25k-plus" className="text-white hover:bg-gray-700">$25,000+</SelectItem>
-                            <SelectItem value="discuss" className="text-white hover:bg-gray-700">Let's Discuss</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-semibold text-gray-300 mb-2">
-                        Message *
-                      </label>
-                      <Textarea
-                        id="message"
-                        value={formData.message}
-                        onChange={(e) => handleInputChange('message', e.target.value)}
-                        placeholder="Tell us about your project, goals, and any specific requirements..."
-                        rows={6}
-                        className="bg-gray-900/50 border-gray-600 text-white placeholder-gray-400 focus:border-orange-500 focus:ring-orange-500/20"
-                        required
-                      />
-                    </div>
-                    
-                    <Button type="submit" className="w-full bg-gradient-to-r from-orange-500 to-purple-500 hover:from-orange-600 hover:to-purple-600 text-white h-14 text-lg font-semibold rounded-xl shadow-lg shadow-orange-500/25 hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200">
-                      Send Message
-                      <Mail className="ml-2 h-5 w-5" />
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
+              <ContactForm />
             </div>
 
             {/* Contact Info Sidebar */}
