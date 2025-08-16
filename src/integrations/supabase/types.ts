@@ -7,241 +7,14 @@ export type Json =
   | Json[]
 
 export type Database = {
-  // Allows to automatically instanciate createClient with right options
+  // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "12.2.3 (519615d)"
+    PostgrestVersion: "13.0.4"
   }
   public: {
     Tables: {
-      blog_posts: {
-        Row: {
-          author_id: string | null
-          content: string
-          created_at: string
-          excerpt: string | null
-          featured_image_url: string | null
-          id: string
-          is_featured: boolean | null
-          is_published: boolean | null
-          meta_description: string | null
-          meta_title: string | null
-          published_at: string | null
-          slug: string
-          tags: string[] | null
-          title: string
-          updated_at: string
-        }
-        Insert: {
-          author_id?: string | null
-          content: string
-          created_at?: string
-          excerpt?: string | null
-          featured_image_url?: string | null
-          id?: string
-          is_featured?: boolean | null
-          is_published?: boolean | null
-          meta_description?: string | null
-          meta_title?: string | null
-          published_at?: string | null
-          slug: string
-          tags?: string[] | null
-          title: string
-          updated_at?: string
-        }
-        Update: {
-          author_id?: string | null
-          content?: string
-          created_at?: string
-          excerpt?: string | null
-          featured_image_url?: string | null
-          id?: string
-          is_featured?: boolean | null
-          is_published?: boolean | null
-          meta_description?: string | null
-          meta_title?: string | null
-          published_at?: string | null
-          slug?: string
-          tags?: string[] | null
-          title?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      contact_submissions: {
-        Row: {
-          admin_notes: string | null
-          company: string | null
-          created_at: string
-          email: string
-          id: string
-          is_read: boolean | null
-          message: string
-          name: string
-          phone: string | null
-          service_interest:
-            | Database["public"]["Enums"]["service_category"]
-            | null
-          status: string | null
-          subject: string | null
-          updated_at: string
-        }
-        Insert: {
-          admin_notes?: string | null
-          company?: string | null
-          created_at?: string
-          email: string
-          id?: string
-          is_read?: boolean | null
-          message: string
-          name: string
-          phone?: string | null
-          service_interest?:
-            | Database["public"]["Enums"]["service_category"]
-            | null
-          status?: string | null
-          subject?: string | null
-          updated_at?: string
-        }
-        Update: {
-          admin_notes?: string | null
-          company?: string | null
-          created_at?: string
-          email?: string
-          id?: string
-          is_read?: boolean | null
-          message?: string
-          name?: string
-          phone?: string | null
-          service_interest?:
-            | Database["public"]["Enums"]["service_category"]
-            | null
-          status?: string | null
-          subject?: string | null
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      profiles: {
-        Row: {
-          avatar_url: string | null
-          created_at: string
-          display_name: string | null
-          id: string
-          role: string | null
-          updated_at: string
-          user_id: string
-        }
-        Insert: {
-          avatar_url?: string | null
-          created_at?: string
-          display_name?: string | null
-          id?: string
-          role?: string | null
-          updated_at?: string
-          user_id: string
-        }
-        Update: {
-          avatar_url?: string | null
-          created_at?: string
-          display_name?: string | null
-          id?: string
-          role?: string | null
-          updated_at?: string
-          user_id?: string
-        }
-        Relationships: []
-      }
-      services: {
-        Row: {
-          category: Database["public"]["Enums"]["service_category"]
-          created_at: string
-          description: string
-          features: string[] | null
-          icon_name: string | null
-          id: string
-          image_url: string | null
-          is_active: boolean | null
-          is_featured: boolean | null
-          price_from: number | null
-          short_description: string | null
-          title: string
-          updated_at: string
-        }
-        Insert: {
-          category: Database["public"]["Enums"]["service_category"]
-          created_at?: string
-          description: string
-          features?: string[] | null
-          icon_name?: string | null
-          id?: string
-          image_url?: string | null
-          is_active?: boolean | null
-          is_featured?: boolean | null
-          price_from?: number | null
-          short_description?: string | null
-          title: string
-          updated_at?: string
-        }
-        Update: {
-          category?: Database["public"]["Enums"]["service_category"]
-          created_at?: string
-          description?: string
-          features?: string[] | null
-          icon_name?: string | null
-          id?: string
-          image_url?: string | null
-          is_active?: boolean | null
-          is_featured?: boolean | null
-          price_from?: number | null
-          short_description?: string | null
-          title?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      testimonials: {
-        Row: {
-          avatar_url: string | null
-          client_company: string | null
-          client_name: string
-          client_position: string | null
-          content: string
-          created_at: string
-          id: string
-          is_active: boolean | null
-          is_featured: boolean | null
-          rating: number | null
-          updated_at: string
-        }
-        Insert: {
-          avatar_url?: string | null
-          client_company?: string | null
-          client_name: string
-          client_position?: string | null
-          content: string
-          created_at?: string
-          id?: string
-          is_active?: boolean | null
-          is_featured?: boolean | null
-          rating?: number | null
-          updated_at?: string
-        }
-        Update: {
-          avatar_url?: string | null
-          client_company?: string | null
-          client_name?: string
-          client_position?: string | null
-          content?: string
-          created_at?: string
-          id?: string
-          is_active?: boolean | null
-          is_featured?: boolean | null
-          rating?: number | null
-          updated_at?: string
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Views: {
       [_ in never]: never
@@ -250,10 +23,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      service_category:
-        | "web-development"
-        | "technical-support"
-        | "business-consultancy"
+      [_ in never]: never
     }
     CompositeTypes: {
       [_ in never]: never
@@ -380,12 +150,6 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {
-      service_category: [
-        "web-development",
-        "technical-support",
-        "business-consultancy",
-      ],
-    },
+    Enums: {},
   },
 } as const
