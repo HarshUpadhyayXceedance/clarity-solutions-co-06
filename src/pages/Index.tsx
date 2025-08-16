@@ -256,7 +256,7 @@ const Index = () => {
         description="Let's discuss how we can help you build a stronger digital presence and optimize your business operations."
         action={{
           text: "Get Free Consultation",
-          href: "/contact",
+          href: "/consultation",
           variant: "glow"
         }}
         className="py-24 relative"
