@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,6 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
+import { useAuth } from '@/App';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { CheckCircle, MessageCircle, Phone, Mail, Building, AlertCircle } from 'lucide-react';
@@ -14,7 +15,15 @@ import { CheckCircle, MessageCircle, Phone, Mail, Building, AlertCircle } from '
 const Consultation = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { user, loading } = useAuth();
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Redirect to login if user is not authenticated
+  useEffect(() => {
+    if (!loading && !user) {
+      navigate('/auth');
+    }
+  }, [user, loading, navigate]);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
